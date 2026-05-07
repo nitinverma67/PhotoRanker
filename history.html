@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>History</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h2>📜 Previous Rankings</h2>
+
+{% if history %}
+    {% for entry in history %}
+        <h3 style="color:white;">Mode: {{ entry.mode }}</h3>
+
+        <table>
+            <tr>
+                <th>Image</th>
+                <th>Score</th>
+            </tr>
+
+            {% for item in entry.results %}
+            <tr>
+                <td>
+                    <img src="/uploads/{{ item.filename }}" width="120">
+                </td>
+                <td>{{ item.score }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endfor %}
+{% else %}
+    <h3 style="color:white;">No history available</h3>
+{% endif %}
+
+<a href="/">⬅ Back</a>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+    <<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h2>🏆 Ranking Results ({{ mode }})</h2>
+
+<table>
+<tr>
+    <th>Rank</th>
+    <th>Image</th>
+    <th>Score</th>
+</tr>
+
+{% for item in results %}
+<tr class="{% if loop.index == 1 %}best{% endif %}">
+    <td>
+        {% if loop.index == 1 %}
+            🥇
+        {% else %}
+            {{ loop.index }}
+        {% endif %}
+    </td>
+    <td>
+        <img src="/uploads/{{ item.filename }}" width="150">
+    </td>
+    <td>{{ item.score }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+<a href="/">⬅ Back</a>
+
+</body>
+</html>
